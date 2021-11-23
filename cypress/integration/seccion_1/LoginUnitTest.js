@@ -17,7 +17,7 @@ describe('Test en Login y documentos de ventas de Lynx',()=>{
         formPage.pressSubMenuDocVentas()
         formPage.pressBtnNuevoDoc()
         formPage.typeRutCliente('19478666-2')
-        formPage.clickOn(817, 199)
+        formPage.clickOn()
         formPage.typeNumberDoc('1234')
         formPage.typeSelectDateIn('1999-12-31')
         formPage.typeSelectDateOut('1999-12-31')

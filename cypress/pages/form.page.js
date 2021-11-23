@@ -20,7 +20,7 @@ class formPage{
         btnNuevoDoc:()=>cy.get('.btn-group > .btn'),
         typeRutCliente:()=>cy.get('.col-md-4 > .el-autocomplete > .el-input > .el-input__inner'),
         //clickOn:()=>cy.get('.col-md-4 > .el-autocomplete > .el-input > .el-input__inner'),
-        clickOn:()=>cy.xpath("//html[1]/body[1]/div[5]/div[1]/div[1]/ul[1]/li[1]"),
+        clickOn:()=>cy.xpath("//li[text()='Mauricio Gutiérrez']"),
         //clickOn:()=>cy.xpath("//li[@class='el-autocomplete-4845-item-0']"),
         numberDoc:()=> cy.get(':nth-child(2) > .card > .card-body > :nth-child(3) > :nth-child(2) > .form-control'),
         selectDateIn:()=>cy.get(':nth-child(2) > .card > .card-body > :nth-child(3) > :nth-child(3) > .form-control'),
@@ -69,7 +69,7 @@ class formPage{
         this.elements.typeRutCliente().type(rutCliente)
     }
     clickOn(){
-        this.elements.clickOn().click(817, 199)
+        this.elements.clickOn().click()
     }
     typeNumberDoc(numberDoc){
         this.elements.numberDoc().type(numberDoc)
