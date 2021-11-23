@@ -16,13 +16,25 @@ describe('Test en Login y documentos de ventas de Lynx',()=>{
         formPage.pressMenuComprobantes()
         formPage.pressSubMenuDocVentas()
         formPage.pressBtnNuevoDoc()
+        //ventana identificacion del documento
         formPage.typeRutCliente('19478666-2')
         formPage.clickOn()
+        formPage.selectDocFact()
         formPage.typeNumberDoc('1234')
-        formPage.typeSelectDateIn('1999-12-31')
-        formPage.typeSelectDateOut('1999-12-31')
-        formPage.selectImp()
+        formPage.typeSelectDateIn('2021-11-23')
+        formPage.typeSelectDateOut('2021-12-05')
+        //ventana valores
+        formPage.typeAfectoValue('2990')
+        formPage.typeAccountValue('410101001')
+        //formPage.selectCenterCostValue()
+        formPage.typeExemptValue('2990')
+        //ventana impuestos adicionales
+        formPage.selectionSelectImp()
+        formPage.selectValueImp('4990')
         formPage.pressBtnOk()
+
+        formPage.pressBtnSave()
+
 
         
 

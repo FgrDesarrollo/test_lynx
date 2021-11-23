@@ -19,18 +19,27 @@ class formPage{
         //creacion nuevo documento
         btnNuevoDoc:()=>cy.get('.btn-group > .btn'),
         typeRutCliente:()=>cy.get('.col-md-4 > .el-autocomplete > .el-input > .el-input__inner'),
-        //clickOn:()=>cy.get('.col-md-4 > .el-autocomplete > .el-input > .el-input__inner'),
-        clickOn:()=>cy.xpath("//li[text()='Mauricio Gutiérrez']"),
-        //clickOn:()=>cy.xpath("//li[@class='el-autocomplete-4845-item-0']"),
+        clickOn:()=>cy.xpath("//li[contains(text(),'Mauricio Gutiérrez')]"),
+        docType:()=>cy.xpath("//html[1]/body[1]/div[1]/section[1]/section[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/select[1]"),
         numberDoc:()=> cy.get(':nth-child(2) > .card > .card-body > :nth-child(3) > :nth-child(2) > .form-control'),
         selectDateIn:()=>cy.get(':nth-child(2) > .card > .card-body > :nth-child(3) > :nth-child(3) > .form-control'),
         selectDateOut:()=>cy.get(':nth-child(4) > .form-control'),
-        selectImp:()=>cy.get('.col-md-5 > .el-select > .el-input > .el-input__inner'),
+      
+        //ventana valores
+        afectoValue:()=>cy.xpath("/html[1]/body[1]/div[1]/section[1]/section[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"),
+        //codigo cuenta 410101001
+        accountValue:()=>cy.get('.col-sm-3 > .el-autocomplete > .el-input > .el-input__inner'),
+        centerCostValue:()=>cy.xpath("/html/body/div[1]/section/section/main/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/div[1]/div[1]/div/div/div[2]/div[2]/div/div/input"),
+        exemptValue:()=>cy.xpath("/html[1]/body[1]/div[1]/section[1]/section[1]/main[1]/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/input[1]"),
+        
+        //ventana impuestos adicionales
+        selectImp:()=> cy.xpath("//span[contains(text(),'LICORES 31.5%')]"),
         valueImp:()=>cy.get(':nth-child(3) > :nth-child(1) > :nth-child(2) > :nth-child(2) > .card > .card-body > :nth-child(2) > :nth-child(2) > .form-control'),
         btnOk:()=>cy.get(':nth-child(2) > :nth-child(3) > .form-control'),
-        accountValue:()=>cy.get('.col-sm-3 > .el-autocomplete > .el-input > .el-input__inner')
 
-
+        //Acciones en ventana principal
+        btnSave:()=>cy.xpath("//button[contains(text(),'Guardar')]")
+        
     }
     typeUserMail(user){
         this.elements.userMail().type(user)
@@ -65,33 +74,51 @@ class formPage{
     pressBtnNuevoDoc(){
         this.elements.btnNuevoDoc().click()
     }
+
+    //ventana identificacion del documento
     typeRutCliente(rutCliente){
         this.elements.typeRutCliente().type(rutCliente)
     }
     clickOn(){
         this.elements.clickOn().click()
     }
+    selectDocFact(){
+        this.elements.docType().select('Factura Electrónica')
+    }
     typeNumberDoc(numberDoc){
         this.elements.numberDoc().type(numberDoc)
     }
     typeSelectDateIn(date){
-        this.elements.selectDateIn().type(date)
+        this.elements.selectDateIn().type(date,{force:true})
     }
-    typeSelectDateOut(dateOut){
-        this.elements.selectDateOut().type()
+    typeSelectDateOut(date2){
+        this.elements.selectDateOut().type(date2,{force:true})
+    } 
+    typeAfectoValue(value){
+        this.elements.afectoValue().type(value,{force:true})
     }
-    selectImp(){
-        this.elements.selectImp().select('CARNES 19%')
+    typeAccountValue(value2){
+        this.elements.accountValue().type(value2,{force:true})
+    }
+    /*selectCenterCostValue(){
+        this.elements.centerCostValue().select('Traigen')
+    }*/
+    typeExemptValue(value3){
+        this.elements.exemptValue().type(value3,{force:true})
+    }
+    //ventana impuestos adicionales
+    selectionSelectImp(){
+        this.elements.selectImp().click({force:true})
+    }
+    selectValueImp(value4){
+        this.elements.valueImp().type(value4,{force:true})
     }
     pressBtnOk(){
-        this.elements.btnOk().click()
+        this.elements.btnOk().click({force:true})
     }
-
-
-
-
-
-
+    pressBtnSave(){
+        this.elements.btnSave().click({force:true})
+    }
     
 }
 module.exports= new formPage()
