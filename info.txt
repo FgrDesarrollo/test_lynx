@@ -27,3 +27,7 @@ npx cypress run --record --key 4b600866-4792-4cd3-9ac5-8b7b2ef822b1
 
 
 Para configurar una nuevo dasboard es necesario configurar el id de proyecto en el archivo cypress.json   "projectId": "qv31aa" y cambiar la key record con el comando: npx cypress run --record --key "xxxxx"
+
+
+
+ "test": "echo \"Error: no test specified\" && exit 1",
